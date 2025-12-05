@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Vân Ánh</title>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <h2 class="logo">Vân Ánh</h2>
+        <ul class="nav-menu">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="project.html">Dự án</a></li>
+            <li><a href="contact.html" class="active">Liên hệ</a></li>
+        </ul>
+        <audio id="bgAudio" loop style="display: none;">
+            <source src="assets/resources/audio/background.mp3" type="audio/mpeg">
+        </audio>
+        <button class="music-toggle" id="musicToggle" title="Bật/Tắt nhạc nền">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Liên hệ với tôi</h1>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-wrapper">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2>Thông tin liên hệ</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <a href="mailto:pvanh190205@gmail.com">pvanh190205@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Điện thoại</h3>
+                        <a href="tel:+84705406961">+84 705406961</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Địa chỉ</h3>
+                        <p>Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+
+                <h3>Kết nối qua mạng xã hội</h3>
+                <div class="social-links-contact">
+                    <a href="https://github.com/Anhhvann" target="_blank" class="social-link-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.facebook.com/Ans1902" class="social-link-item">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+</section>
+
+
+<style>
+/* Contact Section Styles */
+.contact-section {
+    background: white;
+    padding: 80px 0;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.contact-info {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.contact-info h2 {
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.info-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow);
+}
+
+.info-icon {
+    flex-shrink: 0;
+}
+
+.info-icon i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+}
+
+.info-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+
+.info-content p,
+.info-content a {
+    margin: 5px 0;
+    color: var(--text-light);
+}
+
+.info-content a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.contact-info > h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.social-links-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: var(--light-bg);
+    color: var(--primary-color);
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-link-item:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-5px);
+}
+
+.social-link-item i {
+    font-size: 1.2rem;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.contact-form-wrapper h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.contact-form {
+    background: var(--light-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+.form-error {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.form-message {
+    text-align: center;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+    display: block;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.map-section {
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-info h2,
+    .contact-form-wrapper h2 {
+        text-align: center;
+    }
+
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .info-icon {
+        display: flex;
+        justify-content: center;
+    }
+
+    .social-links-contact {
+        justify-content: center;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// Contact Form Handler
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Validate
+        if (!name || !email || !subject || !message) {
+            showMessage('Vui lòng điền đầy đủ tất cả các trường bắt buộc', 'error');
+            return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showMessage('Vui lòng nhập email hợp lệ', 'error');
+            return;
+        }
+        
+        // Simulate sending
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+        
+        setTimeout(() => {
+            // Show success message
+            showMessage('Cảm ơn bạn! Tôi sẽ liên hệ lại với bạn sớm nhất.', 'success');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Restore button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }, 2000);
+    });
+}
+
+function showMessage(text, type) {
+    formMessage.textContent = text;
+    formMessage.className = `form-message ${type}`;
+    
+    setTimeout(() => {
+        formMessage.className = 'form-message';
+    }, 5000);
+}
+
+// Form input animation
+const inputs = document.querySelectorAll('.form-input');
+inputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+    });
+    
+    input.addEventListener('blur', () => {
+        input.parentElement.classList.remove('focused');
+    });
+});
+</script>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

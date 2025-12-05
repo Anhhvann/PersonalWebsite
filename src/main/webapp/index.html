@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vân Ánh - Portfolio</title>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Background Audio -->
+<audio id="bgAudio" loop style="display: none;">
+    <source src="assets/resources/audio/background.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <h2 class="logo">Vân Ánh</h2>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="project.html">Dự án</a></li>
+            <li><a href="contact.html">Liên hệ</a></li>
+        </ul>
+        <!-- Music Toggle Button -->
+        <button class="music-toggle" id="musicToggle" title="Bật/Tắt nhạc nền">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero" role="banner">
+    <div class="hero-content">
+        <div class="avatar-wrapper">
+            <img src="assets/resources/image/avt.jpg" class="avatar" alt="Avatar của Vân Ánh" loading="lazy" decoding="async">
+            <div class="avatar-border"></div>
+        </div>
+        <h1 class="title">Xin chào, tôi là <span class="highlight">Vân Ánh</span></h1>
+        <p class="subtitle">Tôi là sinh viên năm 3 ngành Công Nghệ Thông Tin của Trường Đại Học Sư Phạm Kỹ Thuật Thành Phố Hồ Chí Minh</p>
+        <nav class="social-links" aria-label="Mạng xã hội">
+            <a href="https://github.com/Anhhvann" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+        </nav>
+    </div>
+    <div class="animated-bg" aria-hidden="true"></div>
+</header>
+<!-- Features Section -->
+<section class="features" aria-labelledby="skills-heading">
+    <div class="container">
+        <h2 id="skills-heading">Kỹ năng & Công nghệ</h2>
+        <div class="features-grid">
+            <article class="feature-card">
+                <div class="feature-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                <h3>Frontend Development</h3>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></div>
+                <h3>Data Analysis</h3>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Interests Section -->
+<section class="interests" aria-labelledby="interests-heading">
+    <div class="container">
+        <h2 id="interests-heading">Sở thích của tôi</h2>
+        <div class="interests-grid">
+            <!-- Interest 1: Dogs -->
+            <article class="interest-card">
+                <div class="interest-image">
+                    <img src="assets/resources/image/dog.jpg" alt="Yêu thích những chú chó" loading="lazy" decoding="async">
+                </div>
+                <div class="interest-content">
+                    <h3>Yêu thích chó</h3>
+                    <p>Tôi yêu thích những chú chó, chúng vô cùng thông minh và trung thành. Chúng làm cuộc sống tôi vui vẻ hơn.</p>
+                </div>
+            </article>
+
+            <!-- Interest 2: Singing -->
+            <article class="interest-card">
+                <div class="interest-content">
+                    <h3>Thích nghe nhạc và thích hát</h3>
+                    <p>Âm nhạc là một phần không thể thiếu trong cuộc sống tôi. Tôi thích mọi thể loại nhạc, mỗi thể loại là một gia vị trong cuộc sống của tôi.</p>
+                    <div class="voice-player">
+                        <audio controls style="width: 100%; margin-top: 15px;">
+                            <source src="assets/resources/audio/myvoice.mp3" type="audio/mpeg">
+                            Trình duyệt của bạn không hỗ trợ audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Interest 3: Reading Comics -->
+            <article class="interest-card">
+                <div class="interest-image">
+                    <img src="assets/resources/image/book.jpeg" alt="Yêu thích đọc truyện tranh và sách" loading="lazy" decoding="async">
+                </div>
+                <div class="interest-content">
+                    <h3>Đọc truyện tranh & Đọc sách</h3>
+                    <p>Tôi rất yêu thích đọc truyện tranh và sách. Một cuốn sách mà tôi yêu thích là <strong>"Gia đình trộm cắp"</strong> - một tác phẩm tuyệt vời về tình yêu, gia đình và cuộc sống.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+        <h2 id="cta-heading">Hãy xem những dự án của tôi</h2>
+        <p>Khám phá những công việc mà tôi đã thực hiện</p>
+        <a href="project.html" class="btn btn-primary">Xem các dự án</a>
+    </div>
+</section>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
