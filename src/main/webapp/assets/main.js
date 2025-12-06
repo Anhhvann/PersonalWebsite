@@ -31,16 +31,48 @@ if (bgAudio && musicToggle) {
     // Set audio to start from saved time
     bgAudio.currentTime = savedAudioTime;
     
-    if (savedAudioState === 'true') {
-        bgAudio.volume = 0.3;
-        // Use a small delay to ensure smooth playback
-        setTimeout(() => {
-            bgAudio.play().catch(() => {
-                console.log('Auto-play audio blocked. Click button to play.');
+    // Auto-play music on page load (always autoplay, no 'false' option)
+    const shouldAutoPlay = savedAudioState !== 'false'; // Default is true
+
+    // Ensure audio element has autoplay attributes for better compatibility
+    bgAudio.setAttribute('autoplay', 'autoplay');
+    bgAudio.setAttribute('muted', 'muted');
+    bgAudio.volume = 0.3;
+
+    if (shouldAutoPlay) {
+        // Try multiple approaches to ensure autoplay works
+        const playAttempt = () => {
+            bgAudio.removeAttribute('muted');
+            bgAudio.play().then(() => {
+                isAudioPlaying = true;
+                musicToggle.classList.add('playing');
+                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                console.log('Music is now playing');
+            }).catch(error => {
+                console.log('Autoplay blocked. Will retry on user interaction:', error);
+                // Set up play on first user interaction
+                const playOnInteraction = () => {
+                    bgAudio.play().then(() => {
+                        isAudioPlaying = true;
+                        musicToggle.classList.add('playing');
+                        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        console.log('Music started after user interaction');
+                    }).catch(err => console.log('Could not play:', err));
+
+                    // Remove listeners after first interaction
+                    document.removeEventListener('click', playOnInteraction);
+                    document.removeEventListener('touchstart', playOnInteraction);
+                    window.removeEventListener('focus', playOnInteraction);
+                };
+
+                document.addEventListener('click', playOnInteraction);
+                document.addEventListener('touchstart', playOnInteraction);
+                window.addEventListener('focus', playOnInteraction);
             });
-        }, 0);
-        isAudioPlaying = true;
-        musicToggle.classList.add('playing');
+        };
+
+        // Start playback after a short delay
+        setTimeout(playAttempt, 500);
     }
 
     // Toggle music on button click

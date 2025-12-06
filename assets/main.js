@@ -22,25 +22,48 @@ const musicToggle = document.getElementById('musicToggle');
 let isAudioPlaying = false;
 
 if (bgAudio && musicToggle) {
-    // Load audio preference from localStorage
-    const savedAudioState = localStorage.getItem('audioPlaying');
-    
     // Restore audio position from session storage
     const savedAudioTime = parseFloat(sessionStorage.getItem('audioTime')) || 0;
     
     // Set audio to start from saved time
     bgAudio.currentTime = savedAudioTime;
     
-    if (savedAudioState === 'true') {
-        bgAudio.volume = 0.3;
-        // Use a small delay to ensure smooth playback
-        setTimeout(() => {
-            bgAudio.play().catch(() => {
-                console.log('Auto-play audio blocked. Click button to play.');
-            });
-        }, 0);
-        isAudioPlaying = true;
-        musicToggle.classList.add('playing');
+    // Set muted attribute to bypass autoplay restrictions
+    bgAudio.muted = false;
+    bgAudio.volume = 0.3;
+    
+    // Auto-play music on page load with a delay
+    const playAudio = async () => {
+        try {
+            const playPromise = bgAudio.play();
+            if (playPromise !== undefined) {
+                await playPromise;
+                isAudioPlaying = true;
+                musicToggle.classList.add('playing');
+            }
+        } catch (error) {
+            console.log('Auto-play blocked:', error);
+            // Try again with user gesture
+            const userGesturePlay = () => {
+                bgAudio.play().then(() => {
+                    isAudioPlaying = true;
+                    musicToggle.classList.add('playing');
+                }).catch(err => console.log('Still blocked:', err));
+                document.removeEventListener('click', userGesturePlay);
+                document.removeEventListener('touchstart', userGesturePlay);
+            };
+            document.addEventListener('click', userGesturePlay, { once: true });
+            document.addEventListener('touchstart', userGesturePlay, { once: true });
+        }
+    };
+    
+    // Start playing after DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(playAudio, 300);
+        });
+    } else {
+        setTimeout(playAudio, 300);
     }
 
     // Toggle music on button click
@@ -52,17 +75,14 @@ if (bgAudio && musicToggle) {
             isAudioPlaying = false;
             musicToggle.classList.remove('playing');
             musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            localStorage.setItem('audioPlaying', 'false');
         } else {
             bgAudio.volume = 0.3;
             bgAudio.play().catch(error => {
                 console.log('Could not play audio:', error);
-                alert('Không thể phát nhạc. Vui lòng kiểm tra file audio.');
             });
             isAudioPlaying = true;
             musicToggle.classList.add('playing');
             musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-            localStorage.setItem('audioPlaying', 'true');
         }
     });
 
