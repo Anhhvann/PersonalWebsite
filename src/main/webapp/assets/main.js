@@ -36,7 +36,7 @@ if (bgAudio && musicToggle) {
 
     // Ensure audio element has autoplay attributes for better compatibility
     bgAudio.setAttribute('autoplay', 'autoplay');
-    bgAudio.setAttribute('muted', 'muted');
+    // bgAudio.setAttribute('muted', 'muted'); // Removed to allow autoplay with sound
     bgAudio.volume = 0.3;
 
     if (shouldAutoPlay) {
